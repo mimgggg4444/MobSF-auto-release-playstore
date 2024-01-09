@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 한국어로 비유하자면, 이 선언부는 "이 문서는 '1.0' 버전의 규칙을 따르고, 'UTF-8' 방식으로 글자를 쓴 문서입니다."라는 의미가 됩니다.
+
+그리고 "AndroidManifest"는 Android 앱의 중요한 설정 정보를 담고 있는 파일의 이름입니다. 이 파일에는 앱의 패키지 이름, 사용하는 액티비티, 서비스, 권한 등에 대한 정보가 들어 있습니다.
+
+한국어로 "AndroidManifest"를 해석하면 "안드로이드 선언서" 또는 "안드로이드 명세서"라고 할 수 있습니다. 왜냐하면 이 파일이 앱의 주요한 특성과 구성 요소를 '선언'하거나 '명세'하는 역할을 하기 때문입니다.
+
+따라서, AndroidManifest.xml 파일은 앱의 '신분증'이나 '목차'같은 것으로 이해하시면 됩니다. 이 파일을 통해 안드로이드 시스템은 앱의 주요 정보를 알 수 있고, 어떤 구성 요소가 있으며 어떤 권한이 필요한지 등을 파악할 수 있습니다.
+ -->
 <manifest android:versionCode="362" android:versionName="1.0.362" android:compileSdkVersion="31" android:compileSdkVersionCodename="12" package="kr.mothqb.drivers" platformBuildVersionCode="31" platformBuildVersionName="12"
   xmlns:android="http://schemas.android.com/apk/res/android">
+<!--   이 모든 것을 한국어로 비유하면, 이 <manifest> 태그는 "이 앱은 '362'번째 버전이며, 사용자에게 보여지는 버전 이름은 '1.0.362'입니다. '31' 버전의 Android SDK를 사용하여 컴파일되었고, 이 SDK는 Android 12를 의미합니다. 이 앱의 고유한 식별자는 'kr.mothqb.drivers'이며, 이 앱은 '31' 버전의 Android 플랫폼에서 빌드되었습니다. 그리고 이 XML 문서에서 'android'라는 접두어는 'http://schemas.android.com/apk/res/android'라는 네임스페이스를 나타냅니다."라는 의미가 됩니다.
+ -->
     <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="31" />
+<!--   따라서, 이 <uses-sdk> 태그는 한국어로 "이 앱은 Android 5.0 Lollipop 이상에서 실행할 수 있으며, Android 12를 최적화 대상으로 하고 있습니다."라는 의미가 됩니다.
+ -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+<!--   따라서, 이 <uses-permission> 태그들은 한국어로 "이 앱은 인터넷에 접속할 수 있는 권한과 Google의 광고 ID를 사용할 수 있는 권한을 필요로 합니다."라는 의미가 됩니다. 이는 사용자에게 이러한 권한들을 앱에 부여할 것인지 묻는 권한 요청의 근거가 됩니다.
+ -->
     <queries>
         <package android:name="com.kakao.talk" />
         <intent>
@@ -15,6 +29,8 @@
             <action android:name="android.support.customtabs.action.CustomTabsService" />
         </intent>
     </queries>
+<!--   따라서, 이 <queries> 태그는 한국어로 "이 앱은 카카오톡의 존재를 확인할 수 있으며, 웹 브라우징이 가능한 인텐트를 처리하거나 커스텀 탭 서비스를 수행하는 인텐트를 처리할 수 있는 앱을 찾을 수 있습니다."라는 의미가 됩니다. 이는 앱이 다른 앱과 상호작용하는 범위를 선언하는 것입니다.
+ -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
@@ -22,7 +38,12 @@
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<!--   따라서, 이 <uses-permission> 태그들은 한국어로 "이 앱은 네트워크 상태를 확인하고, 기기의 슬립 상태를 제어하며, Google Play의 설치 리퍼러 서비스에 바인딩하고, 알림을 게시하며, Google Cloud Messaging 서비스에서 메시지를 받고, 기기 부팅 완료에 대한 브로드캐스트 메시지를 받으며, 포그라운드 서비스를 실행하는 권한을 필요로 합니다."라는 의미가 됩니다. 이는 사용자에게 이러한 권한들을 앱에 부여할 것인지 묻는 권한 요청의 근거가 됩니다.
+ -->
     <application android:theme="@style/Theme.WebMobileApp" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:name="kr.teammoth.webview.MyApplication" android:allowBackup="true" android:supportsRtl="true" android:usesCleartextTraffic="true" android:roundIcon="@mipmap/ic_launcher" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:isSplitRequired="true">
+<!--       따라서, 이 <application> 태그는 한국어로 "이 앱은 'Theme.WebMobileApp' 테마를 가지고, 이름은 'app_name'이며, 아이콘은 'ic_launcher'를 사용합니다. 앱의 동작은 'kr.teammoth.webview.MyApplication' 클래스에 의해 제어되며, 데이터 백업과 오른쪽에서 왼쪽으로 작성하는 언어를 지원하며, 평문 네트워크 트래픽을 사용할 수 있습니다. 또한 라운드 아이콘으로 'ic_launcher'를 사용하고, 앱 컴포넌트는 'androidx.core.app.CoreComponentFactory' 클래스에 의해 생성됩니다. 마지막으로, 이 앱은 스플릿 APK를 필요로 합니다."라는 의미가 됩니다. 이는 앱의 전반적인 특성을 사용자에게 선언하는 것입니다.
+ -->
+      
         <activity android:theme="@style/Theme.WebMobileApp.NoActionBar" android:label="@string/title_activity_home" android:name="kr.teammoth.webview.HomeActivity" android:hardwareAccelerated="true" />
         <activity android:theme="@style/Theme.WebMobileApp.NoActionBar" android:label="@string/app_name" android:name="kr.teammoth.webview.SplashActivity" android:exported="true">
             <intent-filter>
@@ -141,10 +162,16 @@
         </service>
         <service android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false" />
         <receiver android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver" android:exported="false" />
+
+      
         <meta-data android:name="com.android.vending.splits.required" android:value="true" />
         <meta-data android:name="com.android.stamp.source" android:value="https://play.google.com/store" />
         <meta-data android:name="com.android.stamp.type" android:value="STAMP_TYPE_DISTRIBUTION_APK" />
         <meta-data android:name="com.android.vending.splits" android:resource="@xml/splits0" />
         <meta-data android:name="com.android.vending.derived.apk.id" android:value="3" />
+<!--       이 코드를 한국어로 풀어서 설명하자면 다음과 같습니다.
+
+"이 코드는 앱에 대한 여러 정보와 설정을 선언하는 부분입니다. 첫 번째 설정은 Google의 데이터 전송 라이브러리에서 작업 스케줄링을 위해 알람 관리자를 사용하는 브로드캐스트 리시버를 설정합니다. 그 다음으로는 앱의 APK를 여러 개로 분할하는 것이 필요하다는 정보, 앱의 출처가 Google Play Store임을 나타내는 정보, 앱의 배포 유형이 APK임을 표시하는 정보, 앱의 APK 분할 정보를 참조하는 XML 리소스 위치, 그리고 파생된 APK의 고유 ID 등의 메타데이터를 설정합니다."
+ -->
     </application>
 </manifest>
