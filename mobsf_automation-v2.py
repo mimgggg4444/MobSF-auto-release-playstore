@@ -9,7 +9,8 @@ MOBSF_URL = "http://localhost:8000"
 API_KEY = MOBSF_API_KEY
 
 # APK 파일 경로
-APK_FILE = "path/to/your/app.apk"
+# 파일위치 업데이트
+APK_FILE = "path/to/apk/"
 
 # 1. APK 파일 업로드
 with open(APK_FILE, "rb") as f:
