@@ -28,3 +28,11 @@ enter the command -> docker pull opensecurity/mobile-security-framework-mobsf:la
 ```
 docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest
 ```
+
+api 처리를 하지 않아서 생긴 문제라고 생각됨
+
+    data = {"hash": hash_value, "scan_type": "apk"} 코드에서 hash_value값이 존재하지 않아서 생기는 문제
+
+1. 문제해결 방법.
+
+- headers,
