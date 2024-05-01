@@ -1,4 +1,10 @@
 # .gitignore
-
 secrets.py
 test.apk
+
+*.pyc
+*.DS_Store
+
+# Ignore myenv folder
+myenv/
+
