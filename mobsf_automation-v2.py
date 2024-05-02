@@ -1,6 +1,8 @@
 import os
 import time
 import requests
+import logging
+
 
 MOBSF_URL = "http://localhost:8000"
 APK_FILE = "test.apk"
@@ -8,27 +10,50 @@ APK_FILE = "test.apk"
 # api key는 변경됩니다.
 MOBSF_API_KEY = "20a58cbecc25de86319138e927ff7f67c98d000e96a627921f09c5eae1322d29"
 
+# 로깅 설정
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
 def upload_apk(file_path):
+
+    if not os.path.isfile(file_path):
+        logger.error(f"파일을 찾을 수 없습니다: {file_path}")
+        return {"status": "error", "error": f"File not found: {file_path}"}
+
+
     url = f"{MOBSF_URL}/api/v1/upload"
-    headers = {"Authorization": MOBSF_API_KEY}
+    headers = {"X-Mobsf-Api-Key": MOBSF_API_KEY}
     files = {"file": open(file_path, "rb")}
-    response = requests.post(url, files=files, headers=headers)
-    response_data = response.json()
-    if response.status_code == 200:
+
+    # 추가 코드
+    try:
+        response = requests.post(url, files=files, headers=headers)
+        response.raise_for_status()  # 오류 발생 시 예외 발생
+        
+        logger.info(f"응답 상태 코드: {response.status_code}")
+        logger.info(f"응답 내용: {response.text}")
+        
+        response_data = response.json()
         return {"status": "success", "hash": response_data.get("hash")}
-    else:
-        return {"status": "error", "error": response_data.get("error", "Unknown error")}
+
+    except requests.exceptions.RequestException as e:
+        logger.error(f"APK 파일 업로드 중 오류 발생: {e}")
+        return {"status": "error", "error": str(e)}
+
+
+
 
 # APK 파일 업로드
 response = upload_apk(APK_FILE)
 if response.get("status") == "success":
     hash_value = response.get("hash")
     if hash_value:
-        print("APK 파일 업로드 성공")
-        print(f"해시 값: {hash_value}")
+        logger.info("APK 파일 업로드 성공")
+        logger.info(f"해시 값: {hash_value}")
+
         
         # 정적 분석 실행
-        headers = {"Authorization": MOBSF_API_KEY}
+        headers = {"X-Mobsf-Api-Key": MOBSF_API_KEY}
         data = {"hash": hash_value, "scan_type": "apk"}
         response = requests.post(f"{MOBSF_URL}/api/v1/scan", headers=headers, data=data)
         if response.status_code == 200:
@@ -68,7 +93,7 @@ if response.get("status") == "success":
             print(f"JSON 보고서 저장 실패: {response.json().get('error', '알 수 없는 오류')}")
         
     else:
-        print("APK 파일 업로드 응답에 해시 값이 없습니다.")
+        logger.warning("APK 파일 업로드 응답에 해시 값이 없습니다.")
 else:
     error_message = response.get("error", "알 수 없는 오류")
-    print(f"APK 파일 업로드 실패: {error_message}")
+    logger.error(f"APK 파일 업로드 실패: {error_message}")
