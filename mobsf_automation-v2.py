@@ -4,11 +4,12 @@ import requests
 import logging
 
 
+# 8000 port 사용
 MOBSF_URL = "http://localhost:8000"
-APK_FILE = "test.apk"
+APK_FILE = "/Users/e/Desktop/test.apk"
 
 # api key는 변경됩니다.
-MOBSF_API_KEY = "20a58cbecc25de86319138e927ff7f67c98d000e96a627921f09c5eae1322d29"
+MOBSF_API_KEY = "19f83e6d4402854fb0148c3a00acf7decd543552f846363e4e7bee19824b643f"
 
 # 로깅 설정
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -23,7 +24,11 @@ def upload_apk(file_path):
 
     url = f"{MOBSF_URL}/api/v1/upload"
     headers = {"X-Mobsf-Api-Key": MOBSF_API_KEY}
-    files = {"file": open(file_path, "rb")}
+
+    # 파일 문제 파일 경로 및 files 제대로 설정. 이유 요청
+    # files = {"file": open(file_path, "rb")}
+    files = {"file": ("test.apk", open(file_path, "rb"), "application/vnd.android.package-archive")}
+
 
     # 추가 코드
     try:
