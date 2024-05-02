@@ -66,18 +66,49 @@ if response.get("status") == "success":
         else:
             print(f"정적 분석 실행 실패: {response.json().get('error', '알 수 없는 오류')}")
         
+# # 정적 분석 완료 확인
+#         while True:
+#             response = requests.post(f"{MOBSF_URL}/api/v1/scan", headers=headers, data={"hash": hash_value})
+#             if response.status_code == 200:
+#                 if response.json().get("status") == "completed":
+#                     print("정적 분석 완료")
+#                     break
+#                 else:
+#                     time.sleep(5)  # 5초 간격으로 분석 완료 여부 확인
+#             else:
+#                 print(f"정적 분석 상태 확인 실패: {response.json().get('error', '알 수 없는 오류')}")
+#                 break
+        
+#         # PDF 보고서 다운로드
+#         response = requests.post(f"{MOBSF_URL}/api/v1/download_pdf", headers=headers, data={"hash": hash_value})
+#         if response.status_code == 200:
+#             with open("static_analysis_report.pdf", "wb") as f:
+#                 f.write(response.content)
+#             print("정적 분석 PDF 보고서 다운로드 완료")
+#         else:
+#             print(f"PDF 보고서 다운로드 실패: {response.json().get('error', '알 수 없는 오류')}")
+        
+#         # JSON 보고서 저장
+#         response = requests.post(f"{MOBSF_URL}/api/v1/report_json", headers=headers, data={"hash": hash_value})
+#         if response.status_code == 200:
+#             with open("static_analysis_report.json", "w") as f:
+#                 f.write(response.text)
+#             print("정적 분석 JSON 보고서 저장 완료")
+#         else:
+#             print(f"JSON 보고서 저장 실패: {response.json().get('error', '알 수 없는 오류')}")
+        
+#     else:
+#         logger.warning("APK 파일 업로드 응답에 해시 값이 없습니다.")
+# else:
+#     error_message = response.get("error", "알 수 없는 오류")
+#     logger.error(f"APK 파일 업로드 실패: {error_message}")
+
+
 # 정적 분석 완료 확인
-        while True:
-            response = requests.post(f"{MOBSF_URL}/api/v1/scan", headers=headers, data={"hash": hash_value})
-            if response.status_code == 200:
-                if response.json().get("status") == "completed":
-                    print("정적 분석 완료")
-                    break
-                else:
-                    time.sleep(5)  # 5초 간격으로 분석 완료 여부 확인
-            else:
-                print(f"정적 분석 상태 확인 실패: {response.json().get('error', '알 수 없는 오류')}")
-                break
+response = requests.post(f"{MOBSF_URL}/api/v1/scan", headers=headers, data={"hash": hash_value})
+if response.status_code == 200:
+    if response.json().get("status") == "completed":
+        print("정적 분석 완료")
         
         # PDF 보고서 다운로드
         response = requests.post(f"{MOBSF_URL}/api/v1/download_pdf", headers=headers, data={"hash": hash_value})
@@ -87,7 +118,7 @@ if response.get("status") == "success":
             print("정적 분석 PDF 보고서 다운로드 완료")
         else:
             print(f"PDF 보고서 다운로드 실패: {response.json().get('error', '알 수 없는 오류')}")
-        
+
         # JSON 보고서 저장
         response = requests.post(f"{MOBSF_URL}/api/v1/report_json", headers=headers, data={"hash": hash_value})
         if response.status_code == 200:
@@ -96,9 +127,7 @@ if response.get("status") == "success":
             print("정적 분석 JSON 보고서 저장 완료")
         else:
             print(f"JSON 보고서 저장 실패: {response.json().get('error', '알 수 없는 오류')}")
-        
     else:
-        logger.warning("APK 파일 업로드 응답에 해시 값이 없습니다.")
+        print("정적 분석이 아직 완료되지 않았습니다.")
 else:
-    error_message = response.get("error", "알 수 없는 오류")
-    logger.error(f"APK 파일 업로드 실패: {error_message}")
+    print(f"정적 분석 상태 확인 실패: {response.json().get('error', '알 수 없는 오류')}")
