@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 한국어로 비유하자면, 이 선언부는 "이 문서는 '1.0' 버전의 규칙을 따르고, 'UTF-8' 방식으로 글자를 쓴 문서입니다."라는 의미가 됩니다.
+
+그리고 "AndroidManifest"는 Android 앱의 중요한 설정 정보를 담고 있는 파일의 이름입니다. 이 파일에는 앱의 패키지 이름, 사용하는 액티비티, 서비스, 권한 등에 대한 정보가 들어 있습니다.
+
+한국어로 "AndroidManifest"를 해석하면 "안드로이드 선언서" 또는 "안드로이드 명세서"라고 할 수 있습니다. 왜냐하면 이 파일이 앱의 주요한 특성과 구성 요소를 '선언'하거나 '명세'하는 역할을 하기 때문입니다.
+
+따라서, AndroidManifest.xml 파일은 앱의 '신분증'이나 '목차'같은 것으로 이해하시면 됩니다. 이 파일을 통해 안드로이드 시스템은 앱의 주요 정보를 알 수 있고, 어떤 구성 요소가 있으며 어떤 권한이 필요한지 등을 파악할 수 있습니다.
+ -->
+<manifest android:versionCode="362" android:versionName="1.0.362" android:compileSdkVersion="31" android:compileSdkVersionCodename="12" package="kr.mothqb.drivers" platformBuildVersionCode="31" platformBuildVersionName="12"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+<!--   이 모든 것을 한국어로 비유하면, 이 <manifest> 태그는 "이 앱은 '362'번째 버전이며, 사용자에게 보여지는 버전 이름은 '1.0.362'입니다. '31' 버전의 Android SDK를 사용하여 컴파일되었고, 이 SDK는 Android 12를 의미합니다. 이 앱의 고유한 식별자는 'kr.mothqb.drivers'이며, 이 앱은 '31' 버전의 Android 플랫폼에서 빌드되었습니다. 그리고 이 XML 문서에서 'android'라는 접두어는 'http://schemas.android.com/apk/res/android'라는 네임스페이스를 나타냅니다."라는 의미가 됩니다.
+ -->
+ 
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="31" />
+<!--   따라서, 이 <uses-sdk> 태그는 한국어로 "이 앱은 Android 5.0 Lollipop 이상에서 실행할 수 있으며, Android 12를 최적화 대상으로 하고 있습니다."라는 의미가 됩니다.
+ -->
+ 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+<!--   따라서, 이 <uses-permission> 태그들은 한국어로 "이 앱은 인터넷에 접속할 수 있는 권한과 Google의 광고 ID를 사용할 수 있는 권한을 필요로 합니다."라는 의미가 됩니다. 이는 사용자에게 이러한 권한들을 앱에 부여할 것인지 묻는 권한 요청의 근거가 됩니다.
+ -->
+
+
+ 
+    <queries>
+        <package android:name="com.kakao.talk" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService" />
+        </intent>
+    </queries>
+<!--   따라서, 이 <queries> 태그는 한국어로 "이 앱은 카카오톡의 존재를 확인할 수 있으며, 웹 브라우징이 가능한 인텐트를 처리하거나 커스텀 탭 서비스를 수행하는 인텐트를 처리할 수 있는 앱을 찾을 수 있습니다."라는 의미가 됩니다. 이는 앱이 다른 앱과 상호작용하는 범위를 선언하는 것입니다.
+ -->
+
+
+ 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<!--   따라서, 이 <uses-permission> 태그들은 한국어로 "이 앱은 네트워크 상태를 확인하고, 기기의 슬립 상태를 제어하며, Google Play의 설치 리퍼러 서비스에 바인딩하고, 알림을 게시하며, Google Cloud Messaging 서비스에서 메시지를 받고, 기기 부팅 완료에 대한 브로드캐스트 메시지를 받으며, 포그라운드 서비스를 실행하는 권한을 필요로 합니다."라는 의미가 됩니다. 이는 사용자에게 이러한 권한들을 앱에 부여할 것인지 묻는 권한 요청의 근거가 됩니다.
+ -->
+
+
+ 
+    <application android:theme="@style/Theme.WebMobileApp" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:name="kr.teammoth.webview.MyApplication" android:allowBackup="true" android:supportsRtl="true" android:usesCleartextTraffic="true" android:roundIcon="@mipmap/ic_launcher" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:isSplitRequired="true">
+<!--       따라서, 이 <application> 태그는 한국어로 "이 앱은 'Theme.WebMobileApp' 테마를 가지고, 이름은 'app_name'이며, 아이콘은 'ic_launcher'를 사용합니다. 앱의 동작은 'kr.teammoth.webview.MyApplication' 클래스에 의해 제어되며, 데이터 백업과 오른쪽에서 왼쪽으로 작성하는 언어를 지원하며, 평문 네트워크 트래픽을 사용할 수 있습니다. 또한 라운드 아이콘으로 'ic_launcher'를 사용하고, 앱 컴포넌트는 'androidx.core.app.CoreComponentFactory' 클래스에 의해 생성됩니다. 마지막으로, 이 앱은 스플릿 APK를 필요로 합니다."라는 의미가 됩니다. 이는 앱의 전반적인 특성을 사용자에게 선언하는 것입니다.
+ -->
+      
+        <activity android:theme="@style/Theme.WebMobileApp.NoActionBar" android:label="@string/title_activity_home" android:name="kr.teammoth.webview.HomeActivity" android:hardwareAccelerated="true" />
+        <activity android:theme="@style/Theme.WebMobileApp.NoActionBar" android:label="@string/app_name" android:name="kr.teammoth.webview.SplashActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="tbbs.owq.kr" android:pathPrefix="@string/deeplink" />
+                <data android:scheme="https" android:host="1al2al.com" android:pathPrefix="@string/deeplink" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/cat" android:host="deeplinkshare" />
+            </intent-filter>
+        </activity>
+<!-- 이 코드는 Android 앱의 활동(액티비티)를 설정하는 부분입니다. 
+
+1. `<activity android:theme="@style/Theme.WebMobileApp.NoActionBar" android:label="@string/title_activity_home" android:name="kr.teammoth.webview.HomeActivity" android:hardwareAccelerated="true" />`
+
+   이 코드는 액티비티의 이름이 'kr.teammoth.webview.HomeActivity'인 홈 화면을 설정합니다. 이 화면의 테마는 액션바가 없는 테마이며, 제목은 'title_activity_home' 문자열 리소스를 참조합니다. 또한, 하드웨어 가속 기능이 켜져 있습니다.
+
+2. `<activity android:theme="@style/Theme.WebMobileApp.NoActionBar" android:label="@string/app_name" android:name="kr.teammoth.webview.SplashActivity" android:exported="true">`
+   
+   이 코드는 액티비티의 이름이 'kr.teammoth.webview.SplashActivity'인 스플래시 화면을 설정합니다. 이 화면의 테마는 액션바가 없는 테마이며, 제목은 'app_name' 문자열 리소스를 참조합니다. 'exported="true"'는 이 액티비티가 다른 앱에 의해 시작될 수 있음을 의미합니다.
+
+   이 액티비티 설정 안에는 세 가지 인텐트 필터(intent-filter)가 있습니다. 인텐트 필터는 이 액티비티가 어떤 종류의 인텐트를 처리할 수 있는지를 정의합니다.
+
+   1. 첫 번째 인텐트 필터는 액티비티가 앱의 메인 화면이며, 런처에서 시작할 수 있음을 나타냅니다.
+   
+   2. 두 번째 인텐트 필터는 액티비티가 웹 링크를 처리할 수 있음을 나타냅니다. 이 필터는 'https://tbbs.owq.kr'와 'https://1al2al.com' 도메인에 대한 딥링크를 처리합니다.
+   
+   3. 세 번째 인텐트 필터는 액티비티가 특정 스키마의 링크를 처리할 수 있음을 나타냅니다. 이 필터는 'cat' 스키마와 'deeplinkshare' 호스트에 대한 링크를 처리합니다.
+
+이 코드를 한국어로 비유해서 설명하자면 다음과 같습니다.
+
+"이 코드는 '집'과 '로비' 같은 여러 개의 '방'을 만드는 일을 합니다. 첫 번째 '방'은 '홈 화면'이라는 이름을 가지고 있으며, 이 방의 인테리어 스타일은 액션바가 없는 스타일입니다. 또한, 이 방은 전력을 효율적으로 사용하기 위해 하드웨어 가속 기능을 사용합니다.
+
+두 번째 '방'은 '스플래시 화면'이라는 이름을 가지고 있습니다. 이 방의 인테리어 스타일도 액션바가 없는 스타일이며, 이 방은 다른 사람들이 들어올 수 있는 '공개된 방'입니다. 이 방에는 세 가지 '문'이 있습니다.
+
+첫 번째 '문'은 이 방이 '집의 메인 방'이며, '집의 대문' 역할을 하는 '런처'에서 직접 들어올 수 있는 문입니다. 두 번째 '문'은 'https://tbbs.owq.kr'과 'https://1al2al.com' 같은 특정 웹사이트에서 바로 이 방으로 들어올 수 있는 '비밀 통로' 역할을 합니다. 세 번째 '문'은 'cat'이라는 특별한 키와 'deeplinkshare'라는 장소에서 이 방으로 들어올 수 있는 '비밀 통로' 역할을 합니다." -->
+
+        <activity android:theme="@style/Theme.WebMobileApp.NoActionBar" android:label="@string/title_activity_home" android:name="kr.teammoth.webview.MyAlramSetActivity" android:exported="true" android:hardwareAccelerated="true">
+            <intent-filter>
+                <action android:name="android.intent.action.View" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+<!-- 주어진 코드는 AndroidManifest.xml 파일에서 `<activity>` 태그를 사용한 부분입니다. 이 태그는 액티비티(화면)에 대한 설정을 정의합니다. 여기서는 하나의 액티비티 설정이 있습니다.
+
+해당 액티비티 설정에 대한 해석은 다음과 같습니다:
+
+1. `android:theme="@style/Theme.WebMobileApp.NoActionBar"`: 액티비티의 테마를 설정하며, 여기서는 'Theme.WebMobileApp.NoActionBar' 스타일을 사용합니다.
+
+2. `android:label="@string/title_activity_home"`: 액티비티의 레이블(제목)을 설정하며, 여기서는 'title_activity_home' 이라는 문자열 리소스를 사용합니다.
+
+3. `android:name="kr.teammoth.webview.MyAlramSetActivity"`: 액티비티의 클래스 이름을 설정하며, 여기서는 'kr.teammoth.webview.MyAlramSetActivity' 클래스를 사용합니다.
+
+4. `android:exported="true"`: 이 액티비티가 다른 앱에서 시작할 수 있도록 공개할 것인지 설정합니다. 여기서는 공개하도록 설정되어 있습니다.
+
+5. `android:hardwareAccelerated="true"`: 하드웨어 가속을 사용할 것인지 설정합니다. 여기서는 하드웨어 가속을 사용하도록 설정되어 있습니다.
+
+액티비티 안의 `<intent-filter>` 태그는 액티비티가 어떤 유형의 인텐트를 처리할 수 있는지를 정의합니다. 여기서는 하나의 인텐트 필터가 설정되어 있습니다.
+
+인텐트 필터 안의 `<action>`과 `<category>` 태그는 인텐트의 종류를 설정합니다. 여기서는 'android.intent.action.View' 액션과 'android.intent.category.DEFAULT' 카테고리를 설정하였습니다. 이는 이 액티비티가 VIEW 액션을 처리할 수 있음을 의미합니다. -->
+
+
+     
+        <activity android:name="kr.teammoth.webview.MainActivity" />
+        <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="@string/admob_app_id" />
+        <service android:name="kr.teammoth.webview.MyFirebaseMessagingService" android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+<!--      이 코드는 Android 앱의 활동(액티비티), 메타 데이터, 그리고 서비스를 설정하는 부분입니다. 
+
+1. `<activity android:name="kr.teammoth.webview.MainActivity" />`
+
+   이 코드는 액티비티의 이름이 'kr.teammoth.webview.MainActivity'인 메인 화면을 설정합니다.
+
+2. `<meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="@string/admob_app_id" />`
+
+   이 코드는 Google AdMob 광고 서비스를 사용하기 위한 설정입니다. 앱의 AdMob 식별자를 설정하고 있습니다. 실제 값은 '@string/admob_app_id' 문자열 리소스에 저장되어 있습니다.
+
+3. `<service android:name="kr.teammoth.webview.MyFirebaseMessagingService" android:exported="false">`
+
+   이 코드는 Firebase 메시지 서비스를 설정하는 부분입니다. 'kr.teammoth.webview.MyFirebaseMessagingService'라는 이름의 서비스를 정의하고 있습니다. 'exported="false"'는 이 서비스가 앱 밖에서는 사용되지 않음을 의미합니다.
+   
+   이 서비스 설정 안에는 인텐트 필터(intent-filter)가 있습니다. 이 인텐트 필터는 서비스가 'com.google.firebase.MESSAGING_EVENT' 액션을 처리할 수 있음을 나타냅니다.
+
+한국어로 비유하여 설명하면 다음과 같습니다.
+
+"이 코드는 '집' 안에 '방'을 만들고, '집'의 정보를 설정하고, '집' 안에서 일하는 '직원'을 설정하는 일을 합니다.
+
+첫 번째 '방'은 '메인 화면'이라는 이름을 가지고 있습니다. 이 방은 앱의 핵심 화면, 즉 '거실' 같은 역할을 합니다.
+
+다음으로, '집'의 정보를 설정하는 부분이 있습니다. 이 부분에서는 '집'이 Google AdMob 광고 서비스를 사용할 수 있도록 AdMob의 '집 주소'를 설정하고 있습니다. 이 '집 주소'는 문자열 리소스에 저장되어 있습니다.
+
+마지막으로, '집' 안에서 일하는 '직원'을 설정하는 부분이 있습니다. 이 '직원'은 Firebase 메시지 서비스를 담당하는 'MyFirebaseMessagingService'라는 이름을 가지고 있습니다. 이 '직원'은 '집' 안에서만 일하며, '집' 밖에서는 일하지 않습니다. 이 '직원'은 'com.google.firebase.MESSAGING_EVENT'라는 일을 처리할 수 있습니다. 이 일은 Firebase에서 보내는 메시지를 받아 처리하는 일을 의미합니다."
+     -->
+
+     
+        <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="@string/default_notification_channel_id" />
+        <meta-data android:name="firebase_messaging_auto_init_enabled" android:value="false" />
+        <meta-data android:name="firebase_analytics_collection_enabled" android:value="true" />
+        <service android:name="com.google.firebase.components.ComponentDiscoveryService" android:exported="false" android:directBootAware="true">
+<!-- 이 코드는 Android 앱의 메타 데이터와 서비스를 설정하는 부분입니다.
+
+1. `<meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="@string/default_notification_channel_id" />`
+
+   이 코드는 Firebase 메시징 서비스의 기본 알림 채널 ID를 설정하는 부분입니다. 실제 값은 '@string/default_notification_channel_id' 문자열 리소스에 저장되어 있습니다.
+
+2. `<meta-data android:name="firebase_messaging_auto_init_enabled" android:value="false" />`
+
+   이 코드는 Firebase 메시징 서비스의 자동 초기화 기능을 비활성화하는 설정입니다. 'false' 값은 자동 초기화 기능을 끈다는 의미입니다.
+
+3. `<meta-data android:name="firebase_analytics_collection_enabled" android:value="true" />`
+
+   이 코드는 Firebase 분석 수집 기능을 활성화하는 설정입니다. 'true' 값은 분석 데이터 수집 기능을 켠다는 의미입니다.
+
+4. `<service android:name="com.google.firebase.components.ComponentDiscoveryService" android:exported="false" android:directBootAware="true">`
+
+   이 코드는 Firebase 컴포넌트 발견 서비스를 설정하는 부분입니다. 'com.google.firebase.components.ComponentDiscoveryService'라는 이름의 서비스를 정의하고 있습니다. 'exported="false"'는 이 서비스가 앱 밖에서는 사용되지 않음을 의미합니다. 'directBootAware="true"'는 이 서비스가 직접 부팅 후에도 작동할 수 있음을 나타냅니다.
+
+한국어로 비유하여 설명하면 다음과 같습니다.
+
+"이 코드는 '집'의 정보를 설정하고, '집' 안에서 일하는 '직원'을 설정하는 일을 합니다.
+
+첫 번째로, '집'의 정보를 설정하는 부분이 있습니다. 이 부분에서는 Firebase 메시징 서비스의 '기본 알림 벨'을 설정하고 있습니다. 이 '알림 벨'의 식별자는 문자열 리소스에 저장되어 있습니다.
+
+두 번째로, Firebase 메시징 서비스의 '자동 문 열기' 기능을 끄는 설정을 합니다. 이는 '집'에 누가 오더라도 '문'이 자동으로 열리지 않게 하는 설정입니다.
+
+세 번째로, Firebase 분석 서비스의 '방문자 기록' 기능을 켜는 설정을 합니다. 이는 '집'에 누가 언제 왔는지, 무엇을 했는지 기록하는 기능을 활성화하는 설정입니다.
+
+마지막으로, '집' 안에서 일하는 '직원'을 설정하는 부분이 있습니다. 이 '직원'은 Firebase 컴포넌트 발견 서비스를 담당하는 'ComponentDiscoveryService'라는 이름을 가지고 있습니다. 이 '직원'은 '집' 안에서만 일하며, '집' 밖에서는 일하지 않습니다. 또한, 이 '직원'은 '집'이 직접 부팅된 후에도 일할 수 있습니다. 이는 '집'이 새로 시작된 후에도 '직원'이 바로 일을 시작할 수 있게 하는 설정입니다."
+         -->
+         
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.ktx.FirebaseMessagingKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.ktx.FirebaseAnalyticsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service>
+        <provider android:name="androidx.startup.InitializationProvider" android:exported="false" android:authorities="kr.mothqb.drivers.androidx-startup">
+            <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup" />
+            <meta-data android:name="androidx.work.WorkManagerInitializer" android:value="androidx.startup" />
+        </provider>
+
+<!-- 네, 이해하신다면 좋겠습니다. 이 코드는 '집'에서 일하는 '직원들'을 등록하고 '집'의 초기화 과정을 설정하는 부분입니다.
+
+1. `<meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.ktx.FirebaseMessagingKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />`
+   
+   이 코드는 'Firebase 메시징 서비스'라는 '직원'을 등록하는 부분입니다. 이 '직원'은 메시지 전송과 관련된 업무를 담당합니다.
+
+2. `<meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.ktx.FirebaseAnalyticsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />`
+
+   이 코드는 'Firebase 분석 서비스'라는 '직원'을 등록하는 부분입니다. 이 '직원'은 방문자 행동 분석과 관련된 업무를 담당합니다.
+
+3. `<meta-data android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />`
+
+   이 코드는 'Firebase 공통 서비스'라는 '직원'을 등록하는 부분입니다. 이 '직원'은 Firebase 서비스의 공통 기능을 관리합니다.
+
+4. `<meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />`
+
+   이 코드는 'Firebase 분석 커넥터 서비스'라는 '직원'을 등록하는 부분입니다. 이 '직원'은 분석 데이터를 다른 서비스와 연동하는 업무를 담당합니다.
+
+5. `<meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />`
+
+   이 코드는 'Firebase 메시징 서비스'라는 '직원'을 다시 한 번 등록하는 부분입니다. 이 '직원'은 메시지 전송과 관련된 업무를 담당합니다.
+
+6. `<meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />`
+
+   이 코드는 'Firebase 데이터 전송 서비스'라는 '직원'을 등록하는 부분입니다. 이 '직원'은 데이터를 안전하게 전송하는 업무를 담당합니다.
+
+7. `<meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />`
+
+   이 코드는 'Firebase 설치 서비스'라는 '직원'을 등록하는 부분입니다. 이 '직원'은 Firebase 설치와 관련된 업무를 담당합니다.
+
+8. `<provider android:name="androidx.startup.InitializationProvider" android:exported="false" android:authorities="kr.mothqb.drivers.androidx-startup">`
+
+   이 코드는 '집'의 초기화 과정을 담당하는 '직원', 즉 'InitializationProvider'를 설정하는 부분입니다. 이 '직원'은 '집'이 시작될 때 필요한 초기화 작업을 관리합니다.
+
+9. `<meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup" />`
+
+   이 코드는 'ProcessLifecycleInitializer'라는 '직원'을 등록하는 부분입니다. 이 '직원'은 앱의 생명 주기와 관련된 업무를 담당합니다.
+
+10. `<meta-data android:name="androidx.work.WorkManagerInitializer" android:value="androidx.startup" />`
+
+    이 코드는 'WorkManagerInitializer'라는 '직원'을 등록하는 부분입니다. 이 '직원'은 백그라운드 작업 관리와 관련된 업무를 담당합니다.
+
+이러한 '직원들'은 각각의 업무를 담당하며, '집'의 운영을 원활하게 합니다. 이들 '직원들'을 통해 '집'은 메시지 전송, 데이터 분석, 데이터 전송, 설치 관리 등 다양한 업무를 수행하게 됩니다. -->
+
+     
+        <activity android:theme="@android:style/Theme.Translucent" android:name="com.google.android.gms.ads.AdActivity" android:exported="false" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" />
+        <provider android:name="com.google.android.gms.ads.MobileAdsInitProvider" android:exported="false" android:authorities="kr.mothqb.drivers.mobileadsinitprovider" android:initOrder="100" />
+        <service android:name="com.google.android.gms.ads.AdService" android:enabled="true" android:exported="false" />
+        <receiver android:name="com.google.android.gms.measurement.AppMeasurementReceiver" android:enabled="true" android:exported="false" />
+        <service android:name="com.google.android.gms.measurement.AppMeasurementService" android:enabled="true" android:exported="false" />
+        <service android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:enabled="true" android:exported="false" />
+<!-- 네, 그럼 다음과 같이 한국어로 설명드리겠습니다.
+
+1. `<activity android:theme="@android:style/Theme.Translucent" android:name="com.google.android.gms.ads.AdActivity" android:exported="false" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" />`
+
+   이 코드는 '광고 전시실'인 'AdActivity'를 설정하는 부분입니다. 이 '전시실'에서는 투명한 테마를 사용하며, 키보드 상태, 화면 방향, 화면 레이아웃 등 다양한 설정 변경에 대응합니다.
+
+2. `<provider android:name="com.google.android.gms.ads.MobileAdsInitProvider" android:exported="false" android:authorities="kr.mothqb.drivers.mobileadsinitprovider" android:initOrder="100" />`
+
+   이 코드는 '모바일 광고 초기화 공급자'인 'MobileAdsInitProvider'를 설정하는 부분입니다. 이 '공급자'는 '집'의 다른 '직원들'이 광고를 보여주기 전 필요한 준비 작업을 담당합니다.
+
+3. `<service android:name="com.google.android.gms.ads.AdService" android:enabled="true" android:exported="false" />`
+
+   이 코드는 '광고 서비스'인 'AdService'를 설정하는 부분입니다. 이 '서비스'는 광고를 관리하고 전달하는 업무를 담당합니다.
+
+4. `<receiver android:name="com.google.android.gms.measurement.AppMeasurementReceiver" android:enabled="true" android:exported="false" />`
+
+   이 코드는 '앱 측정 수신기'인 'AppMeasurementReceiver'를 설정하는 부분입니다. 이 '수신기'는 앱 사용량, 행동 등을 측정하는 데이터를 수집하는 업무를 담당합니다.
+
+5. `<service android:name="com.google.android.gms.measurement.AppMeasurementService" android:enabled="true" android:exported="false" />`
+
+   이 코드는 '앱 측정 서비스'인 'AppMeasurementService'를 설정하는 부분입니다. 이 '서비스'는 앱 사용량, 행동 등을 측정하고 분석하는 업무를 담당합니다.
+
+6. `<service android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:enabled="true" android:exported="false" />`
+
+   이 코드는 '앱 측정 잡 서비스'인 'AppMeasurementJobService'를 설정하는 부분입니다. 이 '서비스'는 앱 측정 작업을 배치 처리하는 업무를 담당합니다.
+
+이러한 '직원들'은 각자의 업무를 담당하며, '집'의 광고 표시, 광고 관리, 앱 사용량 측정 등의 업무를 수행합니다. 이들 '직원들'을 통해 '집'은 광고를 효과적으로 관리하고 사용자 행동을 분석하여 서비스를 개선하게 됩니다. -->
+
+     
+        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND" android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.google.firebase.messaging.FirebaseMessagingService" android:exported="false" android:directBootAware="true">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <provider android:name="com.google.firebase.provider.FirebaseInitProvider" android:exported="false" android:authorities="kr.mothqb.drivers.firebaseinitprovider" android:initOrder="100" android:directBootAware="true" />
+        <activity android:theme="@android:style/Theme.Translucent.NoTitleBar" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:exported="false" />
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+        <service android:name="androidx.work.impl.background.systemalarm.SystemAlarmService" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:directBootAware="false" />
+        <service android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:enabled="@bool/enable_system_job_service_default" android:exported="true" android:directBootAware="false" />
+        <service android:name="androidx.work.impl.foreground.SystemForegroundService" android:enabled="@bool/enable_system_foreground_service_default" android:exported="false" android:directBootAware="false" />
+
+
+     
+        <receiver android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver" android:enabled="true" android:exported="false" android:directBootAware="false" />
+        <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy" android:enabled="false" android:exported="false" android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy" android:enabled="false" android:exported="false" android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY" />
+                <action android:name="android.intent.action.BATTERY_LOW" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy" android:enabled="false" android:exported="false" android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+            </intent-filter>
+        </receiver>
+<!-- 네, 알겠습니다! 각 코드의 기능을 아래와 같이 설명드리겠습니다.
+
+1. `<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND" android:exported="true">`
+   
+   이 코드는 Firebase 인스턴스 ID 수신기를 설정하는 부분입니다. 이 수신기는 Firebase에서 제공하는 고유 식별자를 받아오는 역할을 합니다.
+
+2. `<service android:name="com.google.firebase.messaging.FirebaseMessagingService" android:exported="false" android:directBootAware="true">`
+
+   이 코드는 Firebase 메시징 서비스를 설정하는 부분입니다. 이 서비스는 Firebase에서 제공하는 메시지를 받아 처리하는 역할을 합니다.
+
+3. `<provider android:name="com.google.firebase.provider.FirebaseInitProvider" android:exported="false" android:authorities="kr.mothqb.drivers.firebaseinitprovider" android:initOrder="100" android:directBootAware="true" />`
+
+   이 코드는 Firebase 초기화 공급자를 설정하는 부분입니다. 이 공급자는 Firebase 서비스를 초기화하는 역할을 합니다.
+
+4. `<activity android:theme="@android:style/Theme.Translucent.NoTitleBar" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:exported="false" />`
+
+   이 코드는 Google API 액티비티를 설정하는 부분입니다. 이 액티비티는 Google API를 사용하는데 필요한 화면을 제공합니다.
+
+5. `<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />`
+
+   이 코드는 Google Play 서비스의 버전 정보를 설정하는 부분입니다.
+
+6. `<service android:name="androidx.work.impl.background.systemalarm.SystemAlarmService" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:directBootAware="false" />`
+
+   이 코드는 시스템 알람 서비스를 설정하는 부분입니다. 이 서비스는 백그라운드에서 알람 이벤트를 처리하는 역할을 합니다.
+
+7. `<service android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:enabled="@bool/enable_system_job_service_default" android:exported="true" android:directBootAware="false" />`
+
+   이 코드는 시스템 잡 서비스를 설정하는 부분입니다. 이 서비스는 백그라운드에서 작업 이벤트를 처리하는 역할을 합니다.
+
+8. `<service android:name="androidx.work.impl.foreground.SystemForegroundService" android:enabled="@bool/enable_system_foreground_service_default" android:exported="false" android:directBootAware="false" />`
+
+   이 코드는 시스템 포그라운드 서비스를 설정하는 부분입니다. 이 서비스는 포그라운드에서 작업 이벤트를 처리하는 역할을 합니다.
+
+이러한 코드들은 각각의 역할을 통해 애플리케이션의 여러 기능을 지원하고 있습니다. -->
+
+
+         
+        <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy" android:enabled="false" android:exported="false" android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver" android:enabled="false" android:exported="false" android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
+<!-- 네, 알겠습니다! 해당 코드들에 대한 설명을 아래와 같이 제공하겠습니다.
+
+1. `<receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy" android:enabled="false" android:exported="false" android:directBootAware="false">`
+
+   이 코드는 네트워크 상태가 변경될 때마다 동작하는 리시버를 설정하는 부분입니다. 이 리시버는 네트워크 상태의 변화를 감지하고, 이에 반응하여 특정 동작을 수행합니다. 이 리시버는 기본적으로 비활성화 상태입니다.
+   
+2. `<receiver android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver" android:enabled="false" android:exported="false" android:directBootAware="false">`
+
+   이 코드는 시스템 부팅 완료, 시간 설정 변경, 시간대 변경 이벤트를 감지하여 동작하는 리시버를 설정하는 부분입니다. 이 리시버는 위의 세 가지 이벤트가 발생할 때마다 특정 동작을 수행합니다. 이 리시버도 기본적으로 비활성화 상태입니다.
+
+이런 식으로 표현하는 이유는, 이러한 리시버들이 특정 시스템 이벤트에 반응하여 동작하기 때문입니다. 이벤트가 발생하면 시스템은 이를 감지하고 해당 리시버로 전달합니다. 그리고 리시버는 이를 받아서 지정된 동작을 수행합니다. 이렇게 함으로써, 애플리케이션은 사용자가 명시적으로 동작을 요청하지 않아도 시스템 이벤트에 따라 자동으로 작업을 수행할 수 있습니다. -->
+
+     
+        <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:directBootAware="false">
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver" android:permission="android.permission.DUMP" android:enabled="true" android:exported="true" android:directBootAware="false">
+            <intent-filter>
+                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+            </intent-filter>
+        </receiver>
+
+<!-- 네, 알겠습니다! 해당 코드들에 대한 설명은 다음과 같습니다.
+
+1. `<receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:directBootAware="false">`
+
+   이 코드는 `ConstraintProxyUpdateReceiver`라는 리시버를 설정하는 부분입니다. 이 리시버는 특정 조건이 만족될 때 동작하는 작업을 관리하는 역할을 합니다. `androidx.work.impl.background.systemalarm.UpdateProxies`라는 액션을 받을 때 동작하며, 이는 작업의 조건이 업데이트되었음을 나타냅니다. 이 리시버는 기본적으로 시스템 알람 서비스가 활성화되어 있을 때만 활성화됩니다.
+   
+2. `<receiver android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver" android:permission="android.permission.DUMP" android:enabled="true" android:exported="true" android:directBootAware="false">`
+
+   이 코드는 `DiagnosticsReceiver`라는 리시버를 설정하는 부분입니다. 이 리시버는 애플리케이션의 진단 정보를 수집하는 역할을 합니다. `androidx.work.diagnostics.REQUEST_DIAGNOSTICS`라는 액션을 받을 때 동작하며, 이는 진단 정보의 수집을 요청하는 것을 나타냅니다. 이 리시버는 기본적으로 활성화되어 있습니다.
+
+이런 식으로 표현하는 이유는, 이러한 리시버들이 특정 액션을 받았을 때 동작하기 때문입니다. 액션은 특정 동작을 요청하는 메시지로, 이를 받은 리시버는 이에 따른 동작을 수행합니다. 이를 통해, 애플리케이션은 사용자나 시스템 이벤트에 따라 동적으로 동작할 수 있습니다. -->
+
+     
+        <service android:name="androidx.room.MultiInstanceInvalidationService" android:exported="false" android:directBootAware="true" />
+        <service android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery" android:exported="false">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct" />
+        </service>
+        <service android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false" />
+        <receiver android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver" android:exported="false" />
+
+<!-- 네, 알겠습니다! 해당 코드들에 대한 설명은 다음과 같습니다.
+
+1. `<service android:name="androidx.room.MultiInstanceInvalidationService" android:exported="false" android:directBootAware="true" />`
+
+   이 코드는 `MultiInstanceInvalidationService`라는 서비스를 설정하는 부분입니다. 이 서비스는 여러 인스턴스에서 데이터베이스 변경을 동기화하는 역할을 합니다. 이 서비스는 외부 앱에서 직접 접근할 수 없으며, 직접 부팅 후에도 사용할 수 있습니다.
+
+2. `<service android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery" android:exported="false">`
+
+   이 코드는 `TransportBackendDiscovery`라는 서비스를 설정하는 부분입니다. 이 서비스는 데이터 전송을 위한 백엔드를 찾는 역할을 합니다. 이 서비스는 외부 앱에서 직접 접근할 수 없습니다.
+
+3. `<service android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false" />`
+
+   이 코드는 `JobInfoSchedulerService`라는 서비스를 설정하는 부분입니다. 이 서비스는 작업 스케줄링을 관리하는 역할을 합니다. 이 서비스는 외부 앱에서 직접 접근할 수 없으며, 작업 서비스를 바인드하는 권한이 필요합니다.
+
+4. `<receiver android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver" android:exported="false" />`
+
+   이 코드는 `AlarmManagerSchedulerBroadcastReceiver`라는 리시버를 설정하는 부분입니다. 이 리시버는 알람 매니저를 통해 작업 스케줄링을 수행하는 역할을 합니다. 이 리시버는 외부 앱에서 직접 접근할 수 없습니다.
+
+이런 식으로 표현하는 이유는, 이러한 서비스와 리시버들이 애플리케이션의 특정 기능을 수행하기 때문입니다. 서비스는 백그라운드에서 실행되는 오래 걸리는 작업을 수행하며, 리시버는 특정 이벤트가 발생하면 이에 반응하여 동작합니다. 이를 통해, 애플리케이션은 사용자의 입력이나 시스템 이벤트에 독립적으로 동작할 수 있습니다. -->
+
+
+     
+      
+        <meta-data android:name="com.android.vending.splits.required" android:value="true" />
+        <meta-data android:name="com.android.stamp.source" android:value="https://play.google.com/store" />
+        <meta-data android:name="com.android.stamp.type" android:value="STAMP_TYPE_DISTRIBUTION_APK" />
+        <meta-data android:name="com.android.vending.splits" android:resource="@xml/splits0" />
+        <meta-data android:name="com.android.vending.derived.apk.id" android:value="3" />
+<!--      
+앱에 대한 여러 정보와 설정을 선언하는 부분
+첫 번째 설정은 Google의 데이터 전송 라이브러리에서 작업 스케줄링을 위해 알람 관리자를 사용하는 브로드캐스트 리시버를 설정
+그 다음으로는 앱의 APK를 여러 개로 분할하는 것이 필요하다는 정보, 앱의 출처가 Google Play Store임을 나타내는 정보, 앱의 배포 유형이 APK임을 표시하는 정보, 앱의 APK 분할 정보를 참조하는 XML 리소스 위치, 그리고 파생된 APK의 고유 ID 등의 메타데이터를 설정
+? 파생된?
+ -->
+    </application>
+</manifest>
