@@ -84,7 +84,7 @@ PC에서 Appium 스크립트를 이용하여 Play Store에서 앱을 자동 설�
 
 ### 파일 구성도
 ## A. Appium을 이용하는 PC (Agent 컨트롤 및 APK 추출/전송)
-
+```
 appium_project/
 ├── requirements.txt           # Appium, paramiko, scp, 기타 라이브러리
 ├── appium_config.yaml         # Appium 서버 및 디바이스 설정 파일
@@ -93,14 +93,14 @@ appium_project/
 ├── scp_transfer.py            # 추출된 APK를 메인 리눅스 서버로 전송하는 스크립트 (paramiko + scp)
 └── utils/
     └── helper.py             # 공통 헬퍼 함수 (예: 로깅, 파일 체크 등)
-
+```
 
 
 
 
 
 ## B. 메인 리눅스 서버 (APK 저장, MobSF 분석, DB 저장)
-
+```
 linux_server/
 ├── requirements.txt           # requests, SQLAlchemy, 기타 필요 라이브러리
 ├── mobsf_integration.py       # MobSF API 호출 및 분석 결과 처리 스크립트
@@ -109,7 +109,7 @@ linux_server/
 ├── apk_storage/               # Agent로부터 전송받은 APK 파일 저장 디렉토리
 ├── results/                   # MobSF 분석 결과(JSON) 저장 디렉토리
 └── scheduler.py               # 전체 작업 스케줄링 및 중복 관리 (옵션)
-
+```
 
 
 
